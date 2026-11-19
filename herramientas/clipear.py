@@ -97,10 +97,13 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if credito:
         ev.append(f"Dialogue: 1,{t_ass(0)},{t_ass(duracion)},Credito,,0,0,0,,{esc(credito)}")
     grupos = [palabras[i:i + por_linea] for i in range(0, len(palabras), por_linea)]
-    for g in grupos:
+    for gi, g in enumerate(grupos):
+        sig = grupos[gi + 1][0]["s"] if gi + 1 < len(grupos) else None
         for j, w in enumerate(g):
             ini = w["s"]
             fin = g[j + 1]["s"] if j + 1 < len(g) else w["e"] + 0.15
+            if sig is not None:
+                fin = min(fin, sig)  # nunca solapar con la frase siguiente (evita subtítulos apilados)
             if fin <= ini:
                 continue
             partes = []

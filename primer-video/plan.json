@@ -1,0 +1,30 @@
+{
+  "salida": "final_13_anios.mp4",
+  "gancho": "ESPERARON 13 AÑOS PARA ESTO",
+  "narracion": "narracion.m4a",
+  "musica": "musica.mp3",
+  "volumen_musica": 0.10,
+  "idioma": "es",
+  "modelo": "small",
+  "palabras_por_linea": 3,
+  "segmentos": [
+    {"nota": "HOOK: el pico de la reacción #1 (grito/llanto)", "archivo": "clips/top1.mp4",
+     "inicio": "0:00:10", "fin": "0:00:12.5", "zoom_en": 0.4, "zoom": 1.3, "etiqueta": "@streamer1"},
+    {"nota": "Contexto: menú/pantalla de carga con el chat explotando", "archivo": "clips/carga.mp4",
+     "inicio": "0:00:00", "fin": "0:00:04", "texto": "19 · NOV · 2026", "etiqueta": "@streamer_carga"},
+    {"nota": "#5 reacción más suave", "archivo": "clips/top5.mp4",
+     "inicio": "0:00:00", "fin": "0:00:05", "zoom_en": 3.0, "texto": "#5", "etiqueta": "@streamer5"},
+    {"nota": "#4", "archivo": "clips/top4.mp4",
+     "inicio": "0:00:00", "fin": "0:00:05", "zoom_en": 3.0, "texto": "#4", "etiqueta": "@streamer4"},
+    {"nota": "#3", "archivo": "clips/top3.mp4",
+     "inicio": "0:00:00", "fin": "0:00:05", "zoom_en": 3.0, "texto": "#3", "etiqueta": "@streamer3"},
+    {"nota": "#2", "archivo": "clips/top2.mp4",
+     "inicio": "0:00:00", "fin": "0:00:05", "zoom_en": 3.0, "texto": "#2", "etiqueta": "@streamer2"},
+    {"nota": "#1 completo (la subida)", "archivo": "clips/top1.mp4",
+     "inicio": "0:00:04", "fin": "0:00:10", "texto": "#1", "etiqueta": "@streamer1"},
+    {"nota": "#1 pico en cámara lenta", "archivo": "clips/top1.mp4",
+     "inicio": "0:00:10", "fin": "0:00:12.5", "lento": 0.6, "zoom_en": 0.2, "zoom": 1.35, "etiqueta": "@streamer1"},
+    {"nota": "Cierre/loop: congelado en la pantalla de carga mientras preguntas", "archivo": "clips/carga.mp4",
+     "congelar": "0:00:00.5", "duracion": 3.0}
+  ]
+}

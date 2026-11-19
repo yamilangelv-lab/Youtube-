@@ -1,0 +1,9 @@
+# videos y audios pesados (no se suben al repo)
+*.mp4
+*.mov
+*.mkv
+*.m4a
+*.mp3
+*.wav
+*.palabras.json
+__pycache__/
