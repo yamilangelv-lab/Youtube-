@@ -70,6 +70,40 @@ def render_segmento(seg, base, salida):
     return duracion_de(salida)
 
 
+COLORES_PUESTO = {1: "&H00F2FF&", 2: "&HD8D8D8&", 3: "&H1A7AFF&", 4: "&HFFFFFF&", 5: "&HFFFFFF&"}
+
+
+def estilos_ranking(plan):
+    f = plan.get("fuente", "Arial")
+    rk = plan["ranking"]
+    return (f"Style: RTitulo,{f},{rk.get('tam_titulo', 108)},&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,"
+            f"0,0,0,0,100,100,0,0,1,9,5,8,40,40,{rk.get('y_titulo', 470)},1\n"
+            f"Style: RLista,{f},{rk.get('tam_lista', 70)},&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,"
+            f"0,0,0,0,100,100,0,0,1,7,4,4,0,0,0,1")
+
+
+def eventos_ranking(rk, puestos, fin):
+    """Título en dos colores y lista 1-5 a la izquierda; cada puesto muestra su título al llegar."""
+    ev = []
+    t1, t1b, t2 = rk.get("linea1", "TOP 5"), rk.get("linea1_color", "MOMENTOS"), rk.get("linea2", "")
+    ev.append(f"Dialogue: 4,{t_ass(0)},{t_ass(fin)},RTitulo,,0,0,0,,{esc(t1)} {{\\c&H00F2FF&}}{esc(t1b)}"
+              f"\\N{{\\c&HFFA829&}}{esc(t2)}")
+    x, y0, paso = rk.get("x_lista", 70), rk.get("y_lista", 900), rk.get("paso_lista", 125)
+    revel = {p: (ini, tit) for ini, p, tit in puestos}
+    for p in range(1, 6):
+        y = y0 + (p - 1) * paso
+        col = COLORES_PUESTO[p]
+        base = f"\\an4\\pos({x},{y})\\c{col}"
+        if p in revel:
+            ini, tit = revel[p]
+            ev.append(f"Dialogue: 4,{t_ass(0)},{t_ass(ini)},RLista,,0,0,0,,{{{base}}}{p}.")
+            ev.append(f"Dialogue: 4,{t_ass(ini)},{t_ass(fin)},RLista,,0,0,0,,{{{base}\\fscx60\\fscy60"
+                      f"\\t(0,180,\\fscx112\\fscy112)\\t(180,300,\\fscx100\\fscy100)}}{p}. {esc(tit.upper())}")
+        else:
+            ev.append(f"Dialogue: 4,{t_ass(0)},{t_ass(fin)},RLista,,0,0,0,,{{{base}}}{p}.")
+    return "\n".join(ev) + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("plan")
@@ -83,7 +117,8 @@ def main():
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        partes, etiquetas, sfx_eventos, t = [], [], [], 0.0
+        partes, etiquetas, sfx_eventos, puestos, t = [], [], [], [], 0.0
+        inicio_cta = None
         for i, seg in enumerate(plan["segmentos"], 1):
             print(f"Segmento {i}/{len(plan['segmentos'])}: {seg.get('nota', seg['archivo'])}")
             p = tmp / f"seg{i:02d}.mp4"
@@ -92,6 +127,10 @@ def main():
                 sfx_eventos.append((max(0.0, t - 0.15), "whoosh"))
             for s in seg.get("sfx", []):  # efectos en segundos relativos al segmento
                 sfx_eventos.append((t + float(s.get("en", 0)), s["tipo"]))
+            if seg.get("puesto"):
+                puestos.append((t, int(seg["puesto"]), seg.get("titulo_puesto", "")))
+            if seg.get("cta"):
+                inicio_cta = t
             if seg.get("etiqueta"):
                 etiquetas.append((t, t + d, seg["etiqueta"]))
             if seg.get("texto"):
@@ -134,6 +173,10 @@ def main():
         if plan.get("fuente"):  # p. ej. "Inter Display Black"
             txt = txt.replace("Style: Subs,Arial,", f"Style: Subs,{plan['fuente']},").replace(
                 "Style: Gancho,Arial,", f"Style: Gancho,{plan['fuente']},")
+        rk = plan.get("ranking")
+        if rk:  # formato "TOP 5": título fijo + lista 1-5 que se va revelando
+            txt = txt.replace("\n[Events]", "\n" + estilos_ranking(plan) + "\n[Events]", 1)
+            txt += eventos_ranking(rk, puestos, inicio_cta if inicio_cta is not None else dur)
         ass.write_text(txt, encoding="utf-8")
         extra = []
         for ini, fin, txt in etiquetas:
