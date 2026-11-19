@@ -1,0 +1,143 @@
+{
+ "salida": "top5_auronplay_gta6.mp4",
+ "gancho": "TOP 5 MOMENTOS DE AURONPLAY EN GTA 6",
+ "altura_gancho": 300,
+ "fuente": "Inter Display Black",
+ "subtitulos": false,
+ "whoosh_entre_segmentos": true,
+ "volumen_sfx": 0.7,
+ "segmentos": [
+  {
+   "archivo": "clips/trece_anios.mp4",
+   "inicio": "0:00:22.4",
+   "fin": "0:00:25.3",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 0.3
+    }
+   ],
+   "zoom_en": 0.2,
+   "zoom": 1.25,
+   "zoom_y": 0.6
+  },
+  {
+   "archivo": "clips/toalla.mp4",
+   "inicio": "0:00:05.8",
+   "fin": "0:00:17.5",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "boing",
+     "en": 1.7
+    },
+    {
+     "tipo": "risa_grave",
+     "en": 9.2
+    }
+   ],
+   "texto": "#5 · SALE EN TOALLA"
+  },
+  {
+   "archivo": "clips/opina.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:12.6",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 7.0
+    }
+   ],
+   "texto": "#4 · RETIRA SUS PALABRAS"
+  },
+  {
+   "archivo": "clips/explota_djmario.mp4",
+   "inicio": "0:00:07.4",
+   "fin": "0:00:23.4",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 3.5
+    },
+    {
+     "tipo": "bonk",
+     "en": 8.6
+    },
+    {
+     "tipo": "ding",
+     "en": 15.8
+    }
+   ],
+   "texto": "#3 · LA RATA DE DJMARIO"
+  },
+  {
+   "archivo": "clips/fabiana.mp4",
+   "inicio": "0:00:20.0",
+   "fin": "0:00:34.6",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 7.5
+    },
+    {
+     "tipo": "boing",
+     "en": 11.5
+    }
+   ],
+   "texto": "#2 · SU GORDI FABIANA"
+  },
+  {
+   "archivo": "clips/trece_anios.mp4",
+   "inicio": "0:00:03.9",
+   "fin": "0:00:13.2",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "risa_grave",
+     "en": 7.1
+    }
+   ],
+   "texto": "#1 · 13 AÑOS DESPUÉS"
+  },
+  {
+   "archivo": "clips/trece_anios.mp4",
+   "inicio": "0:00:20.4",
+   "fin": "0:00:36.0",
+   "etiqueta": "Clips: @auronplay",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 2.2
+    },
+    {
+     "tipo": "bonk",
+     "en": 6.1
+    },
+    {
+     "tipo": "ding",
+     "en": 14.1
+    }
+   ],
+   "zoom_en": 2.0,
+   "zoom": 1.2,
+   "zoom_y": 0.6
+  },
+  {
+   "archivo": "clips/trece_anios.mp4",
+   "congelar": "0:00:34.8",
+   "duracion": 3.0,
+   "etiqueta": "Clips: @auronplay",
+   "texto": "¡SUSCRÍBETE PARA NO PERDERTE NADA DE GTA 6!",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 0.2
+    }
+   ]
+  }
+ ]
+}
