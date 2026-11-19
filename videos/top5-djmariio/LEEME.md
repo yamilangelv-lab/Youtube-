@@ -1,5 +1,17 @@
 # TOP 5 MOMENTOS DE DJMARIIO EN GTA 6 😂💀
 
+## ✅ Versión producida (19-11-2026)
+70 s, 1080×1920, -14 LUFS. Fuente: los Shorts oficiales de DjMaRiiO de su primer directo de GTA 6 (descargados con vidIQ).
+- Gancho: "¿Lo has borrado? ¡Acabo de borrar el juego!", con boom.
+- #5 El bebé bailando (SI8J3mo3_9A) · #4 ¡Una iguana! (WAiH_KEJmhc) · #3 Me lo compro, los cocodrilos (7KgOAoTgbXQ)
+- #2 El pack opening (1lgS93XWyuI) · #1 Borra el GTA 6 (gzSr5a_BLIw)
+- Cierre: "¡Suscríbete para no perderte nada de GTA 6!"
+- Efectos de sonido sintetizados con `herramientas/sfx.py`, sin derechos de autor.
+- Para volver a renderizar: `python ../../herramientas/montar.py plan.json --palabras-json subs_corregidos.json` (pon los clips en `clips/`).
+
+---
+## Plan original
+
 Ranking por vistas reales (vidIQ, 19-11-2026). Duración final: unos 65 s.
 
 | # | Momento | Fuente original | Vistas | Archivo en `clips/` |

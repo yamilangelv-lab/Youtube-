@@ -1,22 +1,133 @@
 {
-  "salida": "top5_djmariio_gta6.mp4",
-  "gancho": "TOP 5 MOMENTOS DE DJMARIIO EN GTA 6",
-  "idioma": "es",
-  "modelo": "small",
-  "palabras_por_linea": 3,
-  "subtitulos": true,
-  "segmentos": [
-    {"nota": "HOOK: adelanto del #1 (el pico: se da cuenta de que borró el juego)", "archivo": "clips/1_illojuan_borra.mp4",
-     "inicio": "0:00:10", "fin": "0:00:12", "zoom_en": 0.3, "zoom": 1.2},
-    {"nota": "#5 La iguana", "archivo": "clips/5_iguana.mp4",
-     "inicio": "0:00:00", "fin": "0:00:10", "texto": "#5", "etiqueta": "@DjMaRiiO"},
-    {"nota": "#4 Cocodrilos (me lo compro)", "archivo": "clips/4_cocodrilos.mp4",
-     "inicio": "0:00:04", "fin": "0:00:16", "texto": "#4", "etiqueta": "@DjMaRiiO"},
-    {"nota": "#3 Le roba la scooter a una abuela", "archivo": "clips/3_abuela_scooter.mp4",
-     "inicio": "0:00:00", "fin": "0:00:12", "texto": "#3", "etiqueta": "@DjMaRiiO"},
-    {"nota": "#2 Pack opening en GTA VI", "archivo": "clips/2_pack_opening.mp4",
-     "inicio": "0:00:02", "fin": "0:00:14", "texto": "#2", "etiqueta": "@DjMaRiiO"},
-    {"nota": "#1 IlloJuan borra por error GTA VI (completo)", "archivo": "clips/1_illojuan_borra.mp4",
-     "inicio": "0:00:00", "fin": "0:00:19", "texto": "#1", "etiqueta": "@DjMaRiiO · @IlloJuan", "zoom_en": 10.0, "zoom": 1.25}
-  ]
+ "salida": "top5_djmariio_gta6.mp4",
+ "gancho": "TOP 5 MOMENTOS DE DJMARIIO EN GTA 6",
+ "altura_gancho": 500,
+ "fuente": "Inter Display Black",
+ "altura_subs": 560,
+ "palabras_por_linea": 3,
+ "whoosh_entre_segmentos": true,
+ "volumen_sfx": 0.7,
+ "segmentos": [
+  {
+   "nota": "HOOK",
+   "archivo": "clips/1_illojuan_borra.mp4",
+   "inicio": "0:00:12.2",
+   "fin": "0:00:14.6",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 1.2
+    }
+   ],
+   "zoom_en": 0.9,
+   "zoom": 1.35,
+   "zoom_y": 0.13
+  },
+  {
+   "nota": "#5 · EL BEBÉ BAILANDO",
+   "archivo": "clips/5_embarazada.mp4",
+   "inicio": "0:00:04.8",
+   "fin": "0:00:19.0",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 13.2
+    }
+   ],
+   "texto": "#5 · EL BEBÉ BAILANDO"
+  },
+  {
+   "nota": "#4 · ¡UNA IGUANA!",
+   "archivo": "clips/4_iguana.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:06.0",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "boing",
+     "en": 0.15
+    },
+    {
+     "tipo": "boing",
+     "en": 3.3
+    }
+   ],
+   "zoom_en": 0.1,
+   "zoom": 1.3,
+   "zoom_y": 0.13,
+   "texto": "#4 · ¡UNA IGUANA!"
+  },
+  {
+   "nota": "#3 · ME LO COMPRO",
+   "archivo": "clips/3_cocodrilos.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:13.4",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 3.1
+    },
+    {
+     "tipo": "boing",
+     "en": 6.4
+    }
+   ],
+   "texto": "#3 · ME LO COMPRO"
+  },
+  {
+   "nota": "#2 · EL PACK OPENING",
+   "archivo": "clips/2_pack_opening.mp4",
+   "inicio": "0:00:05.5",
+   "fin": "0:00:18.2",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "risa_grave",
+     "en": 9.0
+    }
+   ],
+   "zoom_en": 8.6,
+   "zoom": 1.3,
+   "zoom_y": 0.13,
+   "texto": "#2 · EL PACK OPENING"
+  },
+  {
+   "nota": "#1 · BORRA EL GTA 6",
+   "archivo": "clips/1_illojuan_borra.mp4",
+   "inicio": "0:00:00.3",
+   "fin": "0:00:18.9",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 12.1
+    },
+    {
+     "tipo": "risa_grave",
+     "en": 15.2
+    }
+   ],
+   "zoom_en": 12.0,
+   "zoom": 1.3,
+   "zoom_y": 0.13,
+   "texto": "#1 · BORRA EL GTA 6"
+  },
+  {
+   "nota": "CTA",
+   "archivo": "clips/1_illojuan_borra.mp4",
+   "congelar": "0:00:13.6",
+   "duracion": 3.0,
+   "texto": "¡SUSCRÍBETE PARA NO PERDERTE NADA DE GTA 6!",
+   "etiqueta": "Clips: @DjMaRiiO",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 0.2
+    }
+   ]
+  }
+ ]
 }
