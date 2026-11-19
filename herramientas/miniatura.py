@@ -5,6 +5,7 @@ y texto grande a la izquierda, con degradado para que se lea.
 Uso:
   python miniatura.py clip.mp4 SEGUNDO Y_RECORTE salida.jpg "LÍNEA 1" "LÍNEA 2" "LÍNEA AMARILLA"
   (Y_RECORTE: desde qué altura del clip vertical se toma la franja 16:9; 0 = arriba)
+  Variables opcionales MINI_ANCHO y MINI_X: ancho y posición x del recorte (para acercar).
 """
 import subprocess
 import sys
@@ -12,7 +13,7 @@ import tempfile
 from pathlib import Path
 
 
-def miniatura(clip, t, y_recorte, salida, lineas, fuente="Inter Display Black"):
+def miniatura(clip, t, y_recorte, salida, lineas, fuente="Inter Display Black", ancho=None, x=None):
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         *blancas, amarilla = lineas
@@ -29,7 +30,8 @@ Style: T,{fuente},104,&H00FFFFFF,&H00FFFFFF,&H00000000,&H99000000,0,0,0,0,100,10
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,0:00:00.00,0:00:10.00,T,,0,0,0,,{texto}
 """, encoding="utf-8")
-        vf = (f"crop=iw:iw*9/16:0:{y_recorte},scale=1280:720,eq=saturation=1.25:contrast=1.08,"
+        recorte = f"crop={ancho}:{ancho}*9/16:{x or 0}:{y_recorte}" if ancho else f"crop=iw:iw*9/16:0:{y_recorte}"
+        vf = (f"{recorte},scale=1280:720,eq=saturation=1.25:contrast=1.08,"
               f"geq=r='r(X,Y)*min(1,0.35+X/900)':g='g(X,Y)*min(1,0.35+X/900)':b='b(X,Y)*min(1,0.35+X/900)',"
               f"ass=t.ass")
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(t), "-i", str(Path(clip).resolve()),
@@ -39,4 +41,6 @@ Dialogue: 0,0:00:00.00,0:00:10.00,T,,0,0,0,,{texto}
 if __name__ == "__main__":
     if len(sys.argv) < 7:
         sys.exit(__doc__)
-    miniatura(sys.argv[1], float(sys.argv[2]), int(sys.argv[3]), sys.argv[4], sys.argv[5:])
+    import os
+    miniatura(sys.argv[1], float(sys.argv[2]), int(sys.argv[3]), sys.argv[4], sys.argv[5:],
+              ancho=os.environ.get("MINI_ANCHO"), x=os.environ.get("MINI_X"))
