@@ -14,6 +14,7 @@ Formato del plan: ver ../primer-video/plan.json
 """
 import argparse
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -70,6 +71,51 @@ def render_segmento(seg, base, salida):
     return duracion_de(salida)
 
 
+def colocar_sin_tapar(ass, pos_segmentos, plan):
+    """Mueve título (#N), gancho, subtítulos y crédito de cada segmento a las posiciones libres
+    calculadas por zonas.py, y reduce su tamaño para no tapar al streamer ni el clip."""
+    import re
+
+    def pos_en(t):
+        for a, b, yt, ys in pos_segmentos:
+            if a - 0.01 <= t < b:
+                return yt, ys
+        return pos_segmentos[-1][2:] if pos_segmentos else (230, 1480)
+
+    def a_seg(ts):
+        h, m, s = ts.split(":")
+        return int(h) * 3600 + int(m) * 60 + float(s)
+
+    tam_t, tam_s = plan.get("tam_titulo", 52), plan.get("tam_subs", 62)
+    out = []
+    for linea in ass.read_text(encoding="utf-8").splitlines():
+        if linea.startswith("Style: Gancho,"):
+            p = linea.split(",")
+            p[2], p[16] = str(tam_t), "12"  # tamaño y margen de la caja
+            linea = ",".join(p)
+        elif linea.startswith("Style: Subs,"):
+            p = linea.split(",")
+            p[2], p[16] = str(tam_s), "5"
+            linea = ",".join(p)
+        elif linea.startswith("Style: Credito,"):
+            p = linea.split(",")
+            p[2] = "26"
+            linea = ",".join(p)
+        elif linea.startswith("Dialogue:"):
+            campos = linea.split(",", 9)
+            estilo, inicio = campos[3], a_seg(campos[1]) + 0.05  # +0.05: evita el redondeo a centésimas
+            yt, ys = pos_en(inicio)
+            if estilo == "Gancho":
+                campos[9] = f"{{\\an5\\pos(540,{yt})}}" + campos[9]
+            elif estilo == "Subs":
+                campos[9] = f"{{\\an5\\pos(540,{ys})}}" + campos[9]
+            elif estilo == "Credito":
+                campos[9] = f"{{\\an8\\pos(540,{yt + int(tam_t * 0.75) + 6})}}" + campos[9]
+            linea = ",".join(campos)
+        out.append(linea)
+    ass.write_text("\n".join(out) + "\n", encoding="utf-8")
+
+
 COLORES_PUESTO = {1: "&H00F2FF&", 2: "&HD8D8D8&", 3: "&H1A7AFF&", 4: "&HFFFFFF&", 5: "&HFFFFFF&"}
 
 
@@ -117,7 +163,7 @@ def main():
 
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
-        partes, etiquetas, sfx_eventos, puestos, t = [], [], [], [], 0.0
+        partes, etiquetas, sfx_eventos, puestos, pos_segmentos, t = [], [], [], [], [], 0.0
         inicio_cta = None
         for i, seg in enumerate(plan["segmentos"], 1):
             print(f"Segmento {i}/{len(plan['segmentos'])}: {seg.get('nota', seg['archivo'])}")
@@ -136,6 +182,11 @@ def main():
             if seg.get("texto"):
                 etiquetas.append((t, t + d, "§" + seg["texto"]))
             partes.append(p)
+            if plan.get("posicion_inteligente", True) and not plan.get("ranking"):
+                from zonas import posiciones
+                pz = posiciones(p)
+                print(f"   textos en y={pz['y_titulo']} (título) y y={pz['y_subs']} (subtítulos); caras: {pz['caras']}")
+                pos_segmentos.append((t, t + d, pz["y_titulo"], pz["y_subs"]))
             t += d
         (tmp / "lista.txt").write_text("".join(f"file '{p}'\n" for p in partes))
         unido = tmp / "unido.mp4"
@@ -186,6 +237,9 @@ def main():
                 extra.append(f"Dialogue: 1,{t_ass(ini)},{t_ass(fin)},Credito,,0,0,0,,{esc(txt)}")
         with open(ass, "a", encoding="utf-8") as fh:
             fh.write("\n".join(extra) + "\n")
+        if plan.get("posicion_inteligente", True) and not rk:
+            colocar_sin_tapar(ass, pos_segmentos, plan)
+            shutil.copy(ass, salida.with_suffix(".ass"))  # para revisar posiciones
 
         # mezcla de audio: clips + narración (con ducking) + música
         entradas = ["-i", str(unido)]

@@ -1,7 +1,6 @@
 {
  "salida": "top5_auronplay_gta6.mp4",
  "gancho": "TOP 5 MOMENTOS DE AURONPLAY EN GTA 6",
- "altura_gancho": 300,
  "fuente": "Inter Display Black",
  "subtitulos": false,
  "whoosh_entre_segmentos": true,
@@ -17,10 +16,7 @@
      "tipo": "boom",
      "en": 0.3
     }
-   ],
-   "zoom_en": 0.2,
-   "zoom": 1.25,
-   "zoom_y": 0.6
+   ]
   },
   {
    "archivo": "clips/toalla.mp4",
@@ -121,10 +117,7 @@
      "tipo": "ding",
      "en": 14.1
     }
-   ],
-   "zoom_en": 2.0,
-   "zoom": 1.2,
-   "zoom_y": 0.6
+   ]
   },
   {
    "archivo": "clips/trece_anios.mp4",

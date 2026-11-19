@@ -1,0 +1,132 @@
+{
+ "salida": "top5_lacobra.mp4",
+ "gancho": "TOP 5 MOMENTOS DE LA COBRA",
+ "fuente": "Inter Display Black",
+ "subtitulos": false,
+ "whoosh_entre_segmentos": true,
+ "volumen_sfx": 0.7,
+ "segmentos": [
+  {
+   "archivo": "clips/estafa.mp4",
+   "inicio": "0:00:13.8",
+   "fin": "0:00:17.3",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 2.3
+    }
+   ]
+  },
+  {
+   "archivo": "clips/penal.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:14.4",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "risa_grave",
+     "en": 7.8
+    }
+   ],
+   "texto": "#5 · EL PENAL DE LA COBRA"
+  },
+  {
+   "archivo": "clips/un_gol.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:11.4",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "boing",
+     "en": 1.0
+    },
+    {
+     "tipo": "ding",
+     "en": 9.0
+    }
+   ],
+   "texto": "#4 · 1 GOL, 20 CELEBRACIONES"
+  },
+  {
+   "archivo": "clips/futbol_que_ven.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:14.0",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 3.0
+    }
+   ],
+   "texto": "#3 · EL FÚTBOL QUE VEN"
+  },
+  {
+   "archivo": "clips/plan_trabajo.mp4",
+   "inicio": "0:00:03.9",
+   "fin": "0:00:14.7",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 7.0
+    }
+   ],
+   "texto": "#2 · SU PLAN PARA QUE LO ECHEN"
+  },
+  {
+   "archivo": "clips/plan_trabajo.mp4",
+   "inicio": "0:00:37.0",
+   "fin": "0:00:40.4",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 3.1
+    }
+   ]
+  },
+  {
+   "archivo": "clips/plan_trabajo.mp4",
+   "inicio": "0:01:25.0",
+   "fin": "0:01:35.0",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 3.6
+    }
+   ]
+  },
+  {
+   "archivo": "clips/estafa.mp4",
+   "inicio": "0:00:00.0",
+   "fin": "0:00:17.3",
+   "etiqueta": "Clips: @lacobraaa",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 6.5
+    },
+    {
+     "tipo": "boom",
+     "en": 16.2
+    }
+   ],
+   "texto": "#1 · LA ESTAFA A DJMARIO"
+  },
+  {
+   "archivo": "clips/estafa.mp4",
+   "congelar": "0:00:16.5",
+   "duracion": 3.0,
+   "etiqueta": "Clips: @lacobraaa",
+   "texto": "¡SUSCRÍBETE PARA MÁS MOMENTOS ASÍ!",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 0.2
+    }
+   ]
+  }
+ ]
+}
