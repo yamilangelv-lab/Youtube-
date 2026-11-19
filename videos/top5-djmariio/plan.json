@@ -1,0 +1,22 @@
+{
+  "salida": "top5_djmariio_gta6.mp4",
+  "gancho": "TOP 5 MOMENTOS DE DJMARIIO EN GTA 6",
+  "idioma": "es",
+  "modelo": "small",
+  "palabras_por_linea": 3,
+  "subtitulos": true,
+  "segmentos": [
+    {"nota": "HOOK: adelanto del #1 (el pico: se da cuenta de que borró el juego)", "archivo": "clips/1_illojuan_borra.mp4",
+     "inicio": "0:00:10", "fin": "0:00:12", "zoom_en": 0.3, "zoom": 1.2},
+    {"nota": "#5 La iguana", "archivo": "clips/5_iguana.mp4",
+     "inicio": "0:00:00", "fin": "0:00:10", "texto": "#5", "etiqueta": "@DjMaRiiO"},
+    {"nota": "#4 Cocodrilos (me lo compro)", "archivo": "clips/4_cocodrilos.mp4",
+     "inicio": "0:00:04", "fin": "0:00:16", "texto": "#4", "etiqueta": "@DjMaRiiO"},
+    {"nota": "#3 Le roba la scooter a una abuela", "archivo": "clips/3_abuela_scooter.mp4",
+     "inicio": "0:00:00", "fin": "0:00:12", "texto": "#3", "etiqueta": "@DjMaRiiO"},
+    {"nota": "#2 Pack opening en GTA VI", "archivo": "clips/2_pack_opening.mp4",
+     "inicio": "0:00:02", "fin": "0:00:14", "texto": "#2", "etiqueta": "@DjMaRiiO"},
+    {"nota": "#1 IlloJuan borra por error GTA VI (completo)", "archivo": "clips/1_illojuan_borra.mp4",
+     "inicio": "0:00:00", "fin": "0:00:19", "texto": "#1", "etiqueta": "@DjMaRiiO · @IlloJuan", "zoom_en": 10.0, "zoom": 1.25}
+  ]
+}
