@@ -1,10 +1,11 @@
 # Herramientas de clipping
 
-Dos scripts que unen las herramientas open-source recomendadas en un flujo de trabajo:
+Tres scripts que unen las herramientas open-source recomendadas en un flujo de trabajo:
 
 | Script | Qué hace |
 |---|---|
 | `momentos.py` | Analiza un VOD largo y lista los momentos con picos de audio y, si le das el chat de Twitch, picos de chat. |
+| `montar.py` | Une varios clips en un Short completo a partir de un `plan.json`: zooms, cámara lenta, textos #1-#5, créditos, tu narración con ducking, música y subtítulos. Ejemplo en `primer-video/`. |
 | `clipear.py` | Toma un tramo (link o archivo), lo pasa a 9:16 y le pone subtítulos palabra por palabra, un gancho de 3 s arriba, el crédito del creador y el audio normalizado a -14 LUFS. |
 
 > Usa solo contenido que tengas permiso de usar: campañas de clipping (Content Rewards) o autorización escrita del creador. Pon siempre el crédito con `--credito`.
