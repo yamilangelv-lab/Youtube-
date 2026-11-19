@@ -54,7 +54,7 @@ def _modulo(nombre):
         return False
 
 
-def transcribir(video, idioma, modelo):
+def transcribir(video, idioma, modelo, vad=True):
     from faster_whisper import WhisperModel  # se importa aquí para que el resto funcione sin él
 
     import numpy as np
@@ -64,7 +64,7 @@ def transcribir(video, idioma, modelo):
                           "-ar", "16000", "-f", "f32le", "-"], capture_output=True, check=True).stdout
     audio = np.frombuffer(raw, dtype=np.float32)
     m = WhisperModel(modelo, device="auto", compute_type="auto")
-    segs, info = m.transcribe(audio, language=idioma, word_timestamps=True, vad_filter=True)
+    segs, info = m.transcribe(audio, language=idioma, word_timestamps=True, vad_filter=vad)
     palabras = [{"w": w.word.strip(), "s": w.start, "e": w.end} for s in segs for w in (s.words or []) if w.word.strip()]
     print(f"  idioma detectado: {info.language}, {len(palabras)} palabras")
     return palabras
