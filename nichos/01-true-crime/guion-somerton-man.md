@@ -2,7 +2,7 @@
 
 **Nicho:** 1 — True Crime & Misterios (documental de investigación)
 **Formato:** documental narrado, faceless, 16:9 long-form
-**Duración estimada:** ~19–20 min (2.749 palabras narradas; a 150 palabras/min ≈ 18,3 min + ~75 s de silencios, tarjetas de capítulo y pantalla final). A 140 palabras/min ≈ 19,6 min de voz.
+**Duración estimada:** ~19–20 min (2.745 palabras narradas; a 150 palabras/min ≈ 18,3 min + ~75 s de silencios, tarjetas de capítulo y pantalla final). A 140 palabras/min ≈ 19,6 min de voz.
 **Idioma:** español latino neutro
 
 **Cómo leer este archivo:**
