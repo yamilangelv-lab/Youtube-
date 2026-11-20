@@ -1,6 +1,6 @@
 # LOS MEJORES MOMENTOS DE DJMARIIO (video largo, 8:25)
 
-Formato horizontal 1920×1080: el clip va centrado; el título del momento, a la izquierda; el crédito y la suscripción, a la derecha; los subtítulos, en una franja propia. Nada tapa al streamer.
+Formato horizontal 1920×1080 **a pantalla completa** (sin barras ni fondo desenfocado). Los clips con cámara y juego llevan el juego a pantalla completa y la cámara en un recuadro arriba a la derecha; los planos de cara van recortados en 16:9 centrados en la cara. Los textos van pequeños, en las esquinas y abajo.
 Son 25 momentos tomados de los Shorts oficiales de @DjMaRiiO, elegidos por vistas (de 13 mil a 1 millón).
 Descartados: "Facto o infactou" (tema delicado) y la parodia animada del Real Madrid (no es un momento de él).
 
