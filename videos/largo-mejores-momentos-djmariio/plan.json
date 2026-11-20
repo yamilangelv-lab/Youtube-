@@ -1,0 +1,268 @@
+{
+ "salida": "mejores_momentos_djmariio.mp4",
+ "titulo": [
+  "LOS MEJORES MOMENTOS",
+  "DE DJMARIIO"
+ ],
+ "credito": "Clips: @DjMaRiiO",
+ "fuente": "Inter Display Black",
+ "idioma": "es",
+ "modelo": "medium",
+ "volumen_sfx": 0.55,
+ "gancho": [
+  {
+   "archivo": "clips/1_illojuan_borra.mp4",
+   "inicio": "0:00:12.20",
+   "fin": "0:00:14.60",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 1.1
+    }
+   ]
+  },
+  {
+   "archivo": "clips/2_pack_opening.mp4",
+   "inicio": "0:00:14.00",
+   "fin": "0:00:16.60"
+  },
+  {
+   "archivo": "clips/corte_cacho.mp4",
+   "inicio": "0:00:10.80",
+   "fin": "0:00:13.90",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 0.5
+    }
+   ]
+  }
+ ],
+ "tarjeta_titulo": {
+  "archivo": "clips/1_illojuan_borra.mp4",
+  "momento": "0:00:13.0",
+  "duracion": 3.0
+ },
+ "momentos": [
+  {
+   "archivo": "clips/barriga_noe.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:15.28",
+   "titulo": "La barriga de Noe",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/3_cocodrilos.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:21.50",
+   "titulo": "Cocodrilos en GTA VI: ¡me lo compro!",
+   "sfx": [
+    {
+     "tipo": "boing",
+     "en": 6.4
+    }
+   ]
+  },
+  {
+   "archivo": "clips/corte_cacho.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:13.91",
+   "titulo": "Lo banean por criticar el corte de Cacho",
+   "sfx": [
+    {
+     "tipo": "bonk",
+     "en": 9.0
+    }
+   ]
+  },
+  {
+   "archivo": "clips/unico_latam.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:25.96",
+   "titulo": "El único país de LATAM al que viaja",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/2_pack_opening.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:20.74",
+   "titulo": "Pack opening en GTA VI",
+   "sfx": [
+    {
+     "tipo": "risa_grave",
+     "en": 14.5
+    }
+   ],
+   "correcciones": {
+    "-opening.": "opening."
+   }
+  },
+  {
+   "archivo": "clips/cobra_cr7.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:18.20",
+   "titulo": "La Cobra opina del físico de CR7",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/grabo_cr7.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:09.02",
+   "titulo": "Grabó con Cristiano Ronaldo",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/buen_partido.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:17.67",
+   "titulo": "Buen partido, Mario",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/4_iguana.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:05.00",
+   "titulo": "¡Una iguana en GTA VI!",
+   "sfx": [
+    {
+     "tipo": "boing",
+     "en": 0.2
+    }
+   ]
+  },
+  {
+   "archivo": "clips/comida.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:15.91",
+   "titulo": "Comida española vs. argentina",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/tamano_cobra.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:17.60",
+   "titulo": "El tamaño de La Cobra y Vincent",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/diferencias.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:11.77",
+   "titulo": "Diferencias entre España y LATAM",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/willyrex.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:16.46",
+   "titulo": "Willyrex no puede sacar este clip",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/adivina_penalti.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:13.56",
+   "titulo": "Adivina el penalti y pasa esto",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/reaccion_penal_cobra.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:19.53",
+   "titulo": "Reacciona al penalti de La Cobra",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/5_embarazada.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:21.85",
+   "titulo": "El bebé bailando en GTA VI",
+   "sfx": [
+    {
+     "tipo": "ding",
+     "en": 13.2
+    }
+   ]
+  },
+  {
+   "archivo": "clips/discord.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:15.53",
+   "titulo": "La actualización de Discord",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/zooms_cobra.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:13.54",
+   "titulo": "Los zooms a La Cobra",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/mejor_mision.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:54.64",
+   "titulo": "La mejor misión de GTA VI",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/irai_cr7.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:26.47",
+   "titulo": "¿Nacimiento de Irai o jugar con CR7?",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/origen_var.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:34.18",
+   "titulo": "El origen del VAR",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/portero.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:19.02",
+   "titulo": "El portero de DjMariio en FC 27",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/realidad_barca.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:27.84",
+   "titulo": "La realidad del Barça",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/graficos_aire.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:14.16",
+   "titulo": "Los gráficos de GTA VI desde el aire",
+   "sfx": []
+  },
+  {
+   "archivo": "clips/1_illojuan_borra.mp4",
+   "inicio": "0:00:00.00",
+   "fin": "0:00:18.83",
+   "titulo": "IlloJuan borra GTA VI por error",
+   "sfx": [
+    {
+     "tipo": "boom",
+     "en": 13.3
+    },
+    {
+     "tipo": "risa_grave",
+     "en": 15.5
+    }
+   ]
+  }
+ ],
+ "recordatorio_en": 0.45,
+ "cierre": {
+  "archivo": "clips/3_cocodrilos.mp4",
+  "momento": "0:00:06.8",
+  "duracion": 6.0,
+  "texto": "¡Suscríbete para no perderte ningún momento!",
+  "despedida": "Nos vemos en el próximo video"
+ }
+}
