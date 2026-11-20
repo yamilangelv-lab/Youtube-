@@ -108,13 +108,13 @@ Sin mostrar el cuerpo ni fotos de autopsia.
 > En este documental seguimos cada pista y separamos lo VERIFICADO, lo DISPUTADO y la LEYENDA.
 >
 > 0:00 Se acabó
-> 1:35 Un hombre sin nada
-> 4:35 La maleta sin dueño
-> 6:40 Tamám Shud
-> 9:00 La enfermera
-> 11:10 Espía, amante o suicida
-> 13:10 Un pelo en una máscara de yeso
-> 16:20 Caso cerrado… o no
+> 1:24 Un hombre sin nada
+> 4:15 La maleta sin dueño
+> 6:02 Tamám Shud
+> 8:13 La enfermera
+> 10:13 Espía, amante o suicida
+> 12:03 Un pelo en una máscara de yeso
+> 15:06 Caso cerrado… o no
 >
 > Fuentes: Smithsonian Magazine; ABC News (Australia); Universidad de Adelaida / Identifinders International; Wikipedia y otras (lista completa en el comentario fijado).
 > Algunas escenas son recreaciones generadas con IA y están marcadas como tales.
