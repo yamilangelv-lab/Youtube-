@@ -15,3 +15,9 @@
 
 ## Próximos streamers (en orden)
 Auronplay → La Cobra → Davo → otros grandes.
+
+## Videos largos (YouTube normal)
+- **Horizontal 16:9, 1920×1080, a pantalla completa de borde a borde.** Sin barras, sin fondo desenfocado y sin el clip vertical centrado en un marco.
+- `herramientas/largo.py` con `"pantalla_completa": true` usa `herramientas/pantalla_completa.py`:
+  - si el clip tiene cámara arriba y juego abajo, el juego llena la pantalla y la cámara va en un recuadro arriba a la derecha;
+  - si es un plano de cara, se recorta en 16:9 centrado en la cara.

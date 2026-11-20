@@ -1,5 +1,5 @@
 {
- "salida": "mejores_momentos_djmariio.mp4",
+ "salida": "mejores_momentos_djmariio_1080p.mp4",
  "titulo": [
   "LOS MEJORES MOMENTOS",
   "DE DJMARIIO"
@@ -264,5 +264,6 @@
   "duracion": 6.0,
   "texto": "¡Suscríbete para no perderte ningún momento!",
   "despedida": "Nos vemos en el próximo video"
- }
+ },
+ "pantalla_completa": true
 }

@@ -33,6 +33,9 @@ ALTO_CLIP = 960          # alto del clip central; debajo queda la franja de subt
 ANCHO_MAX_CLIP = 1300
 
 
+COMPLETA = False  # True: clip a pantalla completa 16:9 (pantalla_completa.py), sin fondo desenfocado
+
+
 def run(cmd, **kw):
     subprocess.run(cmd, check=True, **kw)
 
@@ -41,10 +44,16 @@ def render_clip(src, ini, fin, salida, solo_fondo=False):
     """Clip centrado arriba + fondo desenfocado. solo_fondo=True deja solo el fondo (tarjetas)."""
     fg = (f"[b]scale={ANCHO_MAX_CLIP}:{ALTO_CLIP}:force_original_aspect_ratio=decrease,setsar=1,"
           f"pad=iw+8:ih+8:4:4:color=white@0.85[fg];[bg][fg]overlay=(W-w)/2:0[v0]") if not solo_fondo else "[bg]null[v0]"
-    fc = (f"[0:v]setpts=PTS-STARTPTS,fps={FPS},split[a][b];"
-          f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:5,"
-          f"eq=brightness=-0.3:saturation=0.8[bg];{fg};[v0]format=yuv420p,setsar=1[v];"
-          f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[a]")
+    if COMPLETA and not solo_fondo:
+        from pantalla_completa import filtro
+        fc = (f"[0:v]setpts=PTS-STARTPTS,fps={FPS}[pre];{filtro(src, '[pre]', '[v0]')};"
+              f"[v0]format=yuv420p,setsar=1[v];"
+              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[a]")
+    else:
+        fc = (f"[0:v]setpts=PTS-STARTPTS,fps={FPS},split[a][b];"
+              f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:5,"
+              f"eq=brightness=-0.3:saturation=0.8[bg];{fg};[v0]format=yuv420p,setsar=1[v];"
+              f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asetpts=PTS-STARTPTS[a]")
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(ini), "-to", str(fin), "-i", str(src),
          "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast",
          "-crf", "18", "-r", str(FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", str(salida)])
@@ -57,9 +66,15 @@ def render_congelado(src, t, dur, salida, con_clip=True):
           f"pad=iw+8:ih+8:4:4:color=white@0.85,eq=brightness=-0.15[fg];[bg][fg]overlay=(W-w)/2:0[v0]"
           if con_clip else "[bg]null[v0]")
     division = "split[a][b]" if con_clip else "null[a]"
-    fc = (f"[0:v]trim=end_frame=1,loop=loop=-1:size=1,trim=duration={dur},setpts=N/{FPS}/TB,fps={FPS},{division};"
-          f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:5,"
-          f"eq=brightness=-0.35:saturation=0.8[bg];{fg};[v0]format=yuv420p,setsar=1[v]")
+    congelar = f"[0:v]trim=end_frame=1,loop=loop=-1:size=1,trim=duration={dur},setpts=N/{FPS}/TB,fps={FPS}"
+    if COMPLETA and con_clip:
+        from pantalla_completa import filtro
+        fc = (f"{congelar}[pre];{filtro(src, '[pre]', '[v1]')};"
+              f"[v1]eq=brightness=-0.12,format=yuv420p,setsar=1[v]")
+    else:
+        fc = (f"{congelar},{division};"
+              f"[a]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=30:5,"
+              f"eq=brightness=-0.35:saturation=0.8[bg];{fg};[v0]format=yuv420p,setsar=1[v]")
     run(["ffmpeg", "-y", "-loglevel", "error", "-ss", str(t), "-i", str(src), "-f", "lavfi", "-t", str(dur),
          "-i", "anullsrc=r=48000:cl=stereo", "-filter_complex", fc, "-map", "[v]", "-map", "1:a",
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-r", str(FPS), "-c:a", "aac", "-b:a", "192k",
@@ -84,6 +99,16 @@ def transcribir_tramo(base, archivo, ini, fin, idioma="es", modelo="medium", vad
 
 def estilos(f):
     margen_panel = W - 640  # el texto del panel izquierdo se ajusta a ~580 px de ancho
+    if COMPLETA:  # pantalla completa: textos pequeños en la esquina superior izquierda y franja inferior
+        lineas = f"""Style: Num,{f},34,&H0000F2FF,&H00FFFFFF,&H90000000,&H00000000,0,0,0,0,100,100,3,0,3,10,0,7,40,{W - 900},34,1
+Style: Capitulo,{f},50,&H00FFFFFF,&H00FFFFFF,&H90000000,&H00000000,0,0,0,0,100,100,0,0,3,12,0,7,40,{W - 900},92,1
+Style: Credito,{f},24,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,3,1,1,40,40,20,1
+Style: Subs,{f},58,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,6,2,2,160,160,64,1"""
+    else:
+        lineas = f"""Style: Num,{f},42,&H0000F2FF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,3,0,1,4,2,7,60,{margen_panel},330,1
+Style: Capitulo,{f},70,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,6,3,7,60,{margen_panel},390,1
+Style: Credito,{f},30,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,3,1,9,40,60,60,1
+Style: Subs,{f},54,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,5,2,2,80,80,22,1"""
     return f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -92,10 +117,7 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Num,{f},42,&H0000F2FF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,3,0,1,4,2,7,60,{margen_panel},330,1
-Style: Capitulo,{f},70,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,6,3,7,60,{margen_panel},390,1
-Style: Credito,{f},30,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,3,1,9,40,60,60,1
-Style: Subs,{f},54,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,5,2,2,80,80,22,1
+{lineas}
 Style: Grande,{f},118,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,1,9,5,5,120,120,0,1
 Style: PanelD,{f},50,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,5,2,4,{W - 640},60,0,1
 Style: Boton,{f},50,&H00FFFFFF,&H00FFFFFF,&H000000FF,&H00000000,0,0,0,0,100,100,1,0,3,18,0,5,0,0,0,1
@@ -134,6 +156,8 @@ def main():
     base = pj.parent
     plan = json.loads(pj.read_text(encoding="utf-8"))
     salida = (base / plan.get("salida", "largo.mp4")).resolve()
+    global COMPLETA
+    COMPLETA = bool(plan.get("pantalla_completa"))
     fuente = plan.get("fuente", "Inter Display Black")
     credito = plan.get("credito", "")
 
@@ -201,9 +225,10 @@ def main():
 
         # 4) recordatorio de suscripción a mitad de video (panel derecho)
         mitad = inicio_momentos + (t - inicio_momentos) * plan.get("recordatorio_en", 0.45)
-        ev.append(f"Dialogue: 4,{t_ass(mitad)},{t_ass(mitad + 5)},PanelD,,0,0,0,,{{\\an4\\pos({W - 600},430){POP}}}¿TE ESTÁS RIENDO?")
-        ev.append(f"Dialogue: 4,{t_ass(mitad + 0.4)},{t_ass(mitad + 3.2)},Boton,,0,0,0,,{{\\pos({W - 330},540){POP}}}SUSCRÍBETE")
-        ev.append(f"Dialogue: 4,{t_ass(mitad + 3.2)},{t_ass(mitad + 5)},BotonGris,,0,0,0,,{{\\pos({W - 330},540)}}SUSCRITO ✓")
+        yr = 800 if COMPLETA else 430  # pantalla completa: abajo a la derecha, lejos del recuadro de cámara
+        ev.append(f"Dialogue: 4,{t_ass(mitad)},{t_ass(mitad + 5)},PanelD,,0,0,0,,{{\\an4\\pos({W - 600},{yr}){POP}}}¿TE ESTÁS RIENDO?")
+        ev.append(f"Dialogue: 4,{t_ass(mitad + 0.4)},{t_ass(mitad + 3.2)},Boton,,0,0,0,,{{\\pos({W - 330},{yr + 110}){POP}}}SUSCRÍBETE")
+        ev.append(f"Dialogue: 4,{t_ass(mitad + 3.2)},{t_ass(mitad + 5)},BotonGris,,0,0,0,,{{\\pos({W - 330},{yr + 110})}}SUSCRITO ✓")
         sfx.append((mitad + 0.4, "ding"))
 
         # 5) cierre
