@@ -1,0 +1,14 @@
+{
+  "clip": "clip.mp4", "inicio": "0:10", "fin": "0:55",
+  "titulo": "Recreación de Foley", "pelicula": "Cast Away (2000) – Robert Zemeckis",
+  "integrantes": ["Integrante 1", "Integrante 2", "Integrante 3"],
+  "ambiente": {"archivo": "olas.wav", "volumen": 0.3},
+  "sonidos": [
+    {"archivo": "pasos.wav", "tiempo": "0:02.0", "etiqueta": "Pasos en arena = maicena en bolsa de tela"},
+    {"archivo": "golpe.wav", "tiempo": "0:08.5", "volumen": 1.2, "etiqueta": "Golpe del coco = coco + piedra"},
+    {"archivo": "rama.wav", "tiempo": "0:15", "etiqueta": "Coco rajándose = apio partido"},
+    {"archivo": "fuego.wav", "tiempo": "0:25", "duracion": 0.3, "etiqueta": "Fuego = celofán arrugado"}
+  ],
+  "detras_de_camaras": "bts.mp4",
+  "salida": "video_final.mp4"
+}
