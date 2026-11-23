@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#2b0f5c}
+  #poster{width:1000px;height:1414px;position:relative;overflow:hidden;
+    background:radial-gradient(circle at 50% 46%,#7b3fe4 0%,#4a1aa8 45%,#2b0f5c 100%)}
+  svg{position:absolute;inset:0}
+  .brand{font-family:'Fredoka',sans-serif;font-weight:700}
+  .body{font-family:'Baloo 2',sans-serif;font-weight:800}
+</style></head>
+<body><div id="poster"><svg id="s" viewBox="0 0 1000 1414" width="1000" height="1414"></svg></div>
+<script>
+const NS="http://www.w3.org/2000/svg", s=document.getElementById('s');
+const el=(t,a,p=s)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+const defs=el('defs',{});
+// sunburst rays
+const CX=500, CY=640;
+const rays=el('g',{opacity:0.16});
+for(let i=0;i<24;i++){const a1=i*15*Math.PI/180,a2=(i*15+7.5)*Math.PI/180,R=1400;
+  el('path',{d:`M${CX},${CY} L${CX+R*Math.cos(a1)},${CY+R*Math.sin(a1)} L${CX+R*Math.cos(a2)},${CY+R*Math.sin(a2)} Z`,fill:'#ffffff'},rays);}
+// confetti dots & stars
+const rnd=(()=>{let x=7;return()=>(x=(x*16807)%2147483647)/2147483647;})();
+const conf=['#ffd23f','#ff4fa3','#3ee8d0','#ff8a3d','#9dff6a'];
+for(let i=0;i<70;i++){const x=rnd()*1000,y=rnd()*1414; if(Math.hypot(x-CX,y-CY)<330) continue;
+  el('circle',{cx:x,cy:y,r:3+rnd()*7,fill:conf[i%5],opacity:0.85});}
+function star(x,y,r,c){let d='';for(let i=0;i<8;i++){const rr=i%2?r*0.38:r,a=i*Math.PI/4-Math.PI/2;d+=(i?'L':'M')+(x+rr*Math.cos(a))+','+(y+rr*Math.sin(a));}
+  el('path',{d:d+'Z',fill:c});}
+[[150,520,26,'#fff'],[860,470,30,'#ffd23f'],[880,880,22,'#fff'],[120,900,24,'#3ee8d0'],[790,330,16,'#fff'],[230,330,14,'#ffd23f']].forEach(a=>star(...a));
+
+// stick
+el('rect',{x:CX-22,y:CY+230,width:44,height:250,rx:22,fill:'#fbf6ee',stroke:'#d9cdbb','stroke-width':4});
+el('rect',{x:CX-10,y:CY+240,width:10,height:230,rx:5,fill:'#ffffff',opacity:0.9});
+// ribbon bow on stick
+el('path',{d:`M${CX},${CY+300} C${CX-90},${CY+240} ${CX-130},${CY+340} ${CX-40},${CY+330} Z`,fill:'#ff4fa3'});
+el('path',{d:`M${CX},${CY+300} C${CX+90},${CY+240} ${CX+130},${CY+340} ${CX+40},${CY+330} Z`,fill:'#ff4fa3'});
+el('circle',{cx:CX,cy:CY+305,r:18,fill:'#ff2d8a'});
+
+// candy disc with spiral
+const R=270;
+el('circle',{cx:CX+10,cy:CY+16,r:R+14,fill:'#1a0640',opacity:0.35}); // shadow
+el('circle',{cx:CX,cy:CY,r:R+12,fill:'#ffffff'});
+const clip=el('clipPath',{id:'disc'},defs); el('circle',{cx:CX,cy:CY,r:R},clip);
+const g=el('g',{'clip-path':'url(#disc)'});
+el('circle',{cx:CX,cy:CY,r:R,fill:'#ffd23f'},g);
+const cols=['#ff4fa3','#3ee8d0','#ff8a3d','#8b5cf6'];
+cols.forEach((c,k)=>{let d='';const off=k*Math.PI/2;
+  for(let t=0;t<=6*Math.PI;t+=0.04){const r=8+t*15.5,a=t+off;d+=(t?'L':'M')+(CX+r*Math.cos(a)).toFixed(1)+','+(CY+r*Math.sin(a)).toFixed(1);}
+  el('path',{d,fill:'none',stroke:c,'stroke-width':34,'stroke-linecap':'round'},g);});
+// glossy highlight
+el('ellipse',{cx:CX-120,cy:CY-140,rx:95,ry:48,fill:'#ffffff',opacity:0.45,transform:`rotate(-35 ${CX-120} ${CY-140})`},g);
+el('circle',{cx:CX-185,cy:CY-60,r:14,fill:'#ffffff',opacity:0.6},g);
+// cute face
+el('circle',{cx:CX,cy:CY+30,r:150,fill:'#fff4c2',stroke:'#ffffff','stroke-width':10});
+el('ellipse',{cx:CX-78,cy:CY+10,rx:30,ry:38,fill:'#2b0f5c'});
+el('ellipse',{cx:CX+78,cy:CY+10,rx:30,ry:38,fill:'#2b0f5c'});
+el('circle',{cx:CX-68,cy:CY-4,r:11,fill:'#fff'}); el('circle',{cx:CX+88,cy:CY-4,r:11,fill:'#fff'});
+el('ellipse',{cx:CX-130,cy:CY+62,rx:30,ry:17,fill:'#ff2d8a',opacity:0.75});
+el('ellipse',{cx:CX+130,cy:CY+62,rx:30,ry:17,fill:'#ff2d8a',opacity:0.75});
+el('path',{d:`M${CX-55},${CY+60} Q${CX},${CY+130} ${CX+55},${CY+60} Q${CX},${CY+92} ${CX-55},${CY+60} Z`,fill:'#2b0f5c'});
+el('path',{d:`M${CX-24},${CY+92} Q${CX},${CY+112} ${CX+24},${CY+92} Q${CX},${CY+100} ${CX-24},${CY+92}Z`,fill:'#ff6fb5'});
+
+// motion arcs (spin)
+['#ffffff','#ffd23f'].forEach((c,i)=>{const r=R+45+i*24;
+  el('path',{d:`M${CX+r*Math.cos(-2.6)},${CY+r*Math.sin(-2.6)} A${r},${r} 0 0 1 ${CX+r*Math.cos(-1.9)},${CY+r*Math.sin(-1.9)}`,fill:'none',stroke:c,'stroke-width':10,'stroke-linecap':'round',opacity:0.9});
+  el('path',{d:`M${CX+r*Math.cos(0.35)},${CY+r*Math.sin(0.35)} A${r},${r} 0 0 1 ${CX+r*Math.cos(1.0)},${CY+r*Math.sin(1.0)}`,fill:'none',stroke:c,'stroke-width':10,'stroke-linecap':'round',opacity:0.9});});
+
+// BRAND
+function txt(x,y,str,o){const t=el('text',Object.assign({x,y,'text-anchor':'middle'},o));t.textContent=str;return t;}
+const brandY=215;
+txt(CX,brandY+14,'REMOLINO',{class:'brand','font-size':168,fill:'#1a0640','letter-spacing':4});
+txt(CX,brandY,'REMOLINO',{class:'brand','font-size':168,fill:'none',stroke:'#ffffff','stroke-width':26,'stroke-linejoin':'round','letter-spacing':4});
+const grad=el('linearGradient',{id:'bg',x1:0,y1:0,x2:0,y2:1},defs);
+el('stop',{offset:'0',  'stop-color':'#fff27a'},grad); el('stop',{offset:'0.55','stop-color':'#ffd23f'},grad); el('stop',{offset:'1','stop-color':'#ff8a3d'},grad);
+txt(CX,brandY,'REMOLINO',{class:'brand','font-size':168,fill:'url(#bg)','letter-spacing':4});
+txt(CX,brandY-150,'Paletas de dulce',{class:'body','font-size':38,fill:'#3ee8d0','letter-spacing':6});
+
+// SLOGAN ribbon
+el('path',{d:'M90,262 L910,262 L880,312 L910,362 L90,362 L120,312 Z',fill:'#ff2d8a'});
+el('path',{d:'M90,362 L130,362 L130,385 Z',fill:'#a10f55'}); el('path',{d:'M910,362 L870,362 L870,385 Z',fill:'#a10f55'});
+txt(CX,330,'¡Dale vuelta a la diversión!',{class:'body','font-size':54,fill:'#ffffff'});
+
+// Badge
+const bx=830,by=930; const bg=el('g',{transform:`rotate(12 ${bx} ${by})`});
+let bd='';for(let i=0;i<32;i++){const r=i%2?96:110,a=i*Math.PI/16;bd+=(i?'L':'M')+(bx+r*Math.cos(a))+','+(by+r*Math.sin(a));}
+el('path',{d:bd+'Z',fill:'#3ee8d0',stroke:'#ffffff','stroke-width':6},bg);
+txt(bx,by-22,'¡Colecciona',{class:'body','font-size':27,fill:'#1a0640'},bg);
+txt(bx,by+14,'las 5',{class:'brand','font-size':40,fill:'#1a0640'},bg);
+txt(bx,by+46,'caritas!',{class:'body','font-size':27,fill:'#1a0640'},bg);
+
+// Flavor chips
+const fl=[['Fresa','#ff4fa3'],['Mango','#ffb020'],['Uva','#8b5cf6'],['Sandía','#ff5a5a'],['Limón','#7ad63a']];
+const cy2=1205; let fx=95;
+el('rect',{x:70,y:1112,width:860,height:170,rx:40,fill:'#1a0640',opacity:0.55});
+txt(CX,1162,'5 sabores frutales',{class:'body','font-size':40,fill:'#ffffff'});
+fl.forEach(([n,c])=>{const w=150;el('rect',{x:fx,y:cy2-6,width:w,height:62,rx:31,fill:c,stroke:'#ffffff','stroke-width':4});
+  txt(fx+w/2,cy2+37,n,{class:'body','font-size':30,fill:'#ffffff'});fx+=w+12;});
+
+// CTA
+el('rect',{x:170,y:1290,width:660,height:84,rx:42,fill:'#ffd23f'});
+txt(CX,1346,'¡Búscala en tu tienda favorita!',{class:'body','font-size':40,fill:'#2b0f5c'});
+</script></body></html>
